@@ -61,10 +61,13 @@ if (typeof Object.create !== 'function') {
 
                 self.setActiveLink(link.hash);
                 
-                self.scrollTo($elem, function() { 
+                self.scrollTo($elem, function() {
+
+                    // Update the Hash behind the URL Path
+                    var pathArray = window.location.pathname;
 
                     if (self.options.updateHash && history.pushState) {
-                        history.pushState(null,null, link.hash);
+                        history.pushState(null,null, pathArray + link.hash);
                     }
 
                     self.setTimer();
